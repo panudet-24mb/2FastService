@@ -1,14 +1,17 @@
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
-app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] =  'mysql://admin:Passw0rd_2020@54.254.141.16/2Fast'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Secret_key = 'thisissecret'
 db = SQLAlchemy(app)
-ma = Marshmallow(app)
 
 
-from app.Client.views import ClientService
-app.register_blueprint(ClientService)
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50))
+    password = db.Column(db.String(80))
+    public_id = db.Column(db.String(50), unique=True)
+
+db.create_all()
