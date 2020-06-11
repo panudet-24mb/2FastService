@@ -43,6 +43,8 @@ def ClientCheckvalidJWT(current_user):
   public_id = current_user.public_id
   username = current_user.username
   return jsonify({"public_id": public_id, "username": username})
+
+  
   
 
     
