@@ -6,7 +6,7 @@ import jwt
 import json
 from functools import wraps
 from app.Client.models import User
-from app import Secret_key
+from app import Secret_key ,EndPoint
 
 
 ClientService = Blueprint('ClientService', __name__)
@@ -33,10 +33,16 @@ def token_required(f):
     return decorated
 
 
-@ClientService.route('/Client', methods=['GET'])
+@ClientService.route('/', methods=['GET'])
+def DefaultGateway():
+  return jsonify({"Code": "0001", "Message": "Welcome to 2Fast Gateway"})
+
+@ClientService.route(EndPoint, methods=['GET'])
 @token_required
 def ClientCheckvalidJWT(current_user):
   public_id = current_user.public_id
   username = current_user.username
-  return jsonify({"public_id":public_id , "username":username})
+  return jsonify({"public_id": public_id, "username": username})
+  
+
     
