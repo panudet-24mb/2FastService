@@ -5,20 +5,18 @@ import requests, json
 app = Flask(__name__)
 
 
-@app.route('/TestService/getTest', methods=['GET'])
+@app.route('/TestService/GetTest', methods=['GET'])
 def myRandom():
-    r1 = random.uniform(0, 10)
-    
-    return jsonify('dasdasd') , 200
+    return jsonify(Response = "da") , 200
     
 
 @app.route('/TestService/PostTest', methods=['POST'])
 def myRandom2():
+    
     data = request.get_json()
-
     return jsonify(
-		prediction=data
-	),201
+		Response=data
+	),200
 
  
 

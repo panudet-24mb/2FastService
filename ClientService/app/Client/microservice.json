@@ -1,9 +1,8 @@
 {
     "MicroService": [{
 
-
             "TestService": [{
-                    "getTest": [{
+                    "GetTest": [{
                         "method": "GET",
                         "alive": 1,
                         "needToken": 1,

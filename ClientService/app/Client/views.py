@@ -47,6 +47,8 @@ def token_required(f):
     return decorated
 
 
+
+
 @ClientService.route("/", methods=["GET"])
 def DefaultGateway():
     return jsonify({"Code": "0001", "Message": "Welcome to 2Fast Gateway"})
@@ -68,6 +70,7 @@ def ClientCheckvalidJWT(current_user):
     return jsonify({"public_id": public_id, "username": username})
 
 
+
 @ClientService.route("/<string:ServiceName>/<string:route>",methods=["GET", "POST", "PUT", "DELETE"])
 def MainGateWay(ServiceName, route  ):
     method = request.method
@@ -81,15 +84,20 @@ def MainGateWay(ServiceName, route  ):
     Path = isPath(ChildDetail)
     if method == "POST":
         data_json = request.args.to_dict()
-        r = requests.post(Path + "/" + ServiceName + "/" + route, json=data_json,)
-        print(r.json)
-        return jsonify(r.text  ) ,r.status_code 
+        res = requests.post(Path + "/" + ServiceName + "/" + route, json=data_json,)
+        return jsonify(res.json()) ,res.status_code
     if method == "GET":
         data_json = request.args.to_dict()
-        res = requests.get(Path+"/"+ServiceName+"/"+route , json = data_json )
-        return jsonify({"ServerResponse":res.text }) ,res.status_code
-
-        
+        res = requests.get(Path + "/" + ServiceName + "/" + route, json=data_json,)
+        return jsonify(res.json()) ,res.status_code
+    if method == "PUT":
+        data_json = request.args.to_dict()
+        res = requests.put(Path + "/" + ServiceName + "/" + route, json=data_json,)
+        return jsonify(res.json()) ,res.status_code
+    if method == "DELETE":
+        data_json = request.args.to_dict()
+        res = requests.delete(Path + "/" + ServiceName + "/" + route, json=data_json,)
+        return jsonify(res.json()) ,res.status_code
     return jsonify({"Code": "0005" , " Message": "Not Condition Matchwith"}), 405
  
 
@@ -119,8 +127,6 @@ def GetChildDetail(ServiceName, ChildName):
 def isAlive(ChildData):
     ChildNodeData = ChildData[0]["alive"]
     return ChildNodeData
-
-
 def isMethod(ChildData):
     ChildNodeData = ChildData[0]["method"]
     return ChildNodeData
