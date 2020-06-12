@@ -88,7 +88,7 @@ def MainGateWay(ServiceName, route  ):
     if method == "GET":
         data_json = request.args.to_dict()
         res = requests.get(Path+"/"+ServiceName+"/"+route , json = data_json)
-        return jsonify({"ServerResponse":data_back }) ,res.status_code
+        return jsonify({"ServerResponse":res.text }) ,res.status_code
 
         
     return jsonify({"Code": "0005" , " Message": "Not Condition Matchwith"}), 405
