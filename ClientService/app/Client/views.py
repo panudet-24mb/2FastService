@@ -81,7 +81,7 @@ def MainGateWay(ServiceName, route  ):
     Path = isPath(ChildDetail)
     if method == "POST":
         data_json = request.args.to_dict()
-        r = requests.post(Path + "/" + SerDviceName + "/" + route, json=data_json,)
+        r = requests.post(Path + "/" + ServiceName + "/" + route, json=data_json,)
         print(r.json)
         return jsonify(r.text  ) ,r.status_code 
     if method == "GET":
