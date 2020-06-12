@@ -1,0 +1,36 @@
+{
+    "MicroService": [{
+
+
+            "TestService": [{
+                    "getTest": [{
+                        "method": "GET",
+                        "alive": 1,
+                        "needToken": 1,
+                        "Path": "http://localhost:5002"
+                    }],
+                    "PostTest": [{
+                        "method": "POST",
+                        "alive": 1,
+                        "needToken": 1,
+                        "Path": "http://localhost:5002"
+                    }]
+
+
+
+                }
+
+            ]
+
+
+
+        }
+
+
+
+
+    ]
+
+
+
+}
