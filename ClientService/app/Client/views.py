@@ -81,13 +81,12 @@ def MainGateWay(ServiceName, route  ):
     Path = isPath(ChildDetail)
     if method == "POST":
         data_json = request.args.to_dict()
-        res = requests.post(Path + "/" + ServiceName + "/" + route, json=data_json)
-        data_back = json.dumps(json.loads(res.text), indent=4)
-
-        return jsonify({ "ServerResponse": data_back}) ,res.status_code
+        r = requests.post(Path + "/" + SerDviceName + "/" + route, json=data_json,)
+        print(r.json)
+        return jsonify(r.text  ) ,r.status_code 
     if method == "GET":
         data_json = request.args.to_dict()
-        res = requests.get(Path+"/"+ServiceName+"/"+route , json = data_json)
+        res = requests.get(Path+"/"+ServiceName+"/"+route , json = data_json )
         return jsonify({"ServerResponse":res.text }) ,res.status_code
 
         
