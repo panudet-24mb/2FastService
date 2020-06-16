@@ -10,5 +10,4 @@ ADD . /app
 # Install the dependencies
 RUN pip install -r requirements.txt
 
-# run the command to start uWSGI
-CMD ["uwsgi", "app.ini"]
+CMD ["run.py"]
