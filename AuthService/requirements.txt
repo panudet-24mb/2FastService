@@ -20,7 +20,7 @@ marshmallow==3.6.1
 marshmallow-sqlalchemy==0.23.1
 mccabe==0.6.1
 mysqlclient==1.4.6
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.2.2
 PyMySQL==0.9.3
 pytz==2020.1
